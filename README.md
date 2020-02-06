@@ -1,6 +1,6 @@
 # MOIL SDK 
 
-MOIL SDK is collection of functions support c++ developments for fisheye image applications, tested both on ubuntu 18.04 and raspberrypi( Raspbian Buster ), gcc/g++ and OpenCV are required in the development. 
+MOIL SDK is collection of functions support c++ developments for fisheye image applications, tested both on ubuntu 18.04 and Raspberry Pi( Raspbian Buster ), gcc/g++ and OpenCV are required in the development. 
 
 ## 1. Development environment
 
