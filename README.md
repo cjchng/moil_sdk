@@ -161,7 +161,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 ## 4. Example project
 
-	[https://github.com.cjchng/mainmoil_6view](https://github.com/cjchng/mainmoil_6view)
+[https://github.com.cjchng/mainmoil_6view](https://github.com/cjchng/mainmoil_6view)
 
 
 
