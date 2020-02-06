@@ -70,7 +70,8 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 #### 3.2 AnypointM     
 
-    C++ : double AnyPointM(float *mapX, float *mapY, int w, int h, double alphaOffset, double betaOffset, double zoom, double magnification);
+    C++ : double AnyPointM(float *mapX, float *mapY, int w, int h, double alphaOffset, double betaOffset,
+    double zoom, double magnification);
 
     Purpose :
     
@@ -103,7 +104,8 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 #### 3.3 fastAnyPointM
 
-	C++ : double fastAnyPointM(float *mapX, float *mapY, int w, int h, double alphaOffset, double betaOffset, double zoom, double magnification);
+	C++ : double fastAnyPointM(float *mapX, float *mapY, int w, int h, double alphaOffset, double betaOffset,
+	double zoom, double magnification);
 
     Purpose :
     
