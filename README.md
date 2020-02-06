@@ -42,7 +42,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
         
     Purpose : 
     
-    Each fisheye camera can be calibrated and derives a set of parameters by MOIL laboratory, before the successive functions can work correctly, configuration is necessary in the beginning of program. 
+> Each fisheye camera can be calibrated and derives a set of parameters by MOIL laboratory, before the successive functions can work correctly, configuration is necessary in the beginning of program. 
     
     Parameters :
     
@@ -74,7 +74,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
     Purpose :
     
-    To generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to remap the original fisheye image to the target angle image.   
+> To generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to remap the original fisheye image to the target angle image.   
 
     Parameters : 
 
@@ -107,7 +107,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
     Purpose :
     
-    To generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to remap the original fisheye image to the target angle image. This function use fast algorithm to achieve similar result. However, some sampling artifacts appear with larger alphaOffset value. This function save about 50% computing time on Raspberry Pi.     
+> To generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to remap the original fisheye image to the target angle image. This function use fast algorithm to achieve similar result. However, some sampling artifacts appear with larger alphaOffset value. This function save about 50% computing time on Raspberry Pi.     
 
     Parameters : 
 
@@ -123,7 +123,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
     Purpose :
     
-    To generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to generate a panorama image from the original fisheye image.   
+> To generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to generate a panorama image from the original fisheye image.   
 
     Parameters : 
 
