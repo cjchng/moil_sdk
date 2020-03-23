@@ -1,3 +1,11 @@
+#TESTING & COMMENT 
+Meaasges  Asso found @ISSUE NOTE as 23Mar2020
+Testing program __*main.cpp*__ was not found
+We have to enhance this document for the future target customer
+
+
+
+
 # MOIL SDK 
 
 MOIL SDK is collection of functions support c++ developments for fisheye image applications, tested both on ubuntu 18.04 and Raspberry Pi( Raspbian Buster ), gcc/g++ and OpenCV are required in the development. 
