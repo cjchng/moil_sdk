@@ -62,7 +62,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
     . para0 .. para5 : calibration parameters
 
     Example:   
-    
+```
     #include "moildev.h"
     Moildev *md = new Moildev();
     // Raspberry Pi 220 degree fisheye camera
@@ -71,7 +71,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
         2592, 1944, 4.05,
         0, 0, 0, 0, -47.96, 222.86
         );
-
+```
 #### 3.2 AnypointM     
 
     C++ : double AnyPointM(float *mapX, float *mapY, int w, int h, double alphaOffset, double betaOffset,
@@ -93,7 +93,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 	. manification : input image width / calibrationWidth, where calibrationWidth can get by calling getImageWidth(), manification is normally equal to 1.  
 
 	Example :
-
+```
 	#include <opencv2/opencv.hpp>
     #include "moildev.h"
     Moildev *md = new Moildev();
@@ -105,6 +105,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 	Mat image_result;
 	md->AnyPointM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 0, 0, 4, m_ratio);     
 	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+```
 
 #### 3.3 AnypointM2     
 
@@ -126,7 +127,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 	. manification : input image width / calibrationWidth, where calibrationWidth can get by calling getImageWidth(), manification is normally equal to 1.  
 
 	Example :
-
+```
 	#include <opencv2/opencv.hpp>
     #include "moildev.h"
     Moildev *md = new Moildev();
@@ -138,7 +139,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 	Mat image_result;
 	md->AnyPointM2((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 30, 30, 4, m_ratio);     
 	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
-
+```
 
 
 #### 3.4 fastAnyPointM
@@ -176,7 +177,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 	. alpha_max : max of alpha. The recommended vaule is half of camera FOV. For example, use 90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
 
 	Example :
-
+```
 	#include <opencv2/opencv.hpp>
     #include "moildev.h"
     Moildev *md = new Moildev();
@@ -188,6 +189,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 	Mat image_result;
 	md->PanoramaM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, m_ratio, 110);     
 	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+```
 
 #### 3.6. PanoramaM_Rt
 
@@ -209,7 +211,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 	. iC_beta_degree : beta angle of panorama center. 
 
 	Example :
-
+```
 	#include <opencv2/opencv.hpp>
     #include "moildev.h"
     Moildev *md = new Moildev();
@@ -221,6 +223,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 	Mat image_result;
 	md->PanoramaM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, m_ratio, 110);     
 	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+```
 
 ## 4. Build 
 
