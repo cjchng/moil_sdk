@@ -41,7 +41,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
     C++ : bool Config(string cameraName, dou檔案
 > Each fisheye camera can be calibrated and derives a set of parameters by MOIL laboratory, before the successive functions can work correctly, configuration is necessary in the beginning of program. 
     
-    **Parameters** :
+**Parameters** :
     
     . caneraName - A string to describe this camera
     . cameraSensorWidth - Camera sensor width (cm)
@@ -63,11 +63,11 @@ md->Config("car", 1.4, 1.4,
 檔案 *mapY, int w, int h, double alphaOffset, double betaOffset,
     double zoom, double magnification);
 
-    **Purpose** :
+**Purpose** :
     
 > Anypoint Mode 1, the purpose is to generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to remap the original fisheye image to the target angle image. The result rotation is betaOffset degree rotation around the Z-axis(roll) after alphaOffset degree rotation around the X-axis(pitch).  
 
-    **Parameters** : 
+**Parameters** : 
 
     . mapX : memory pointer of result X-Map   
     . mapY : memory pointer of result Y-Map
@@ -79,7 +79,7 @@ md->Config("car", 1.4, 1.4,
 	. manification : input image width / calibrationWidth, where calibrationWidth can get by
 	  calling getImageWidth(), manification is normally equal to 1.  
 
-	**Example** :
+**Example** :
 ```
 #include <opencv2/opencv.hpp>
 #include "moildev.h"
@@ -100,11 +100,11 @@ Scalar(0, 0, 0));
 
     C++ : double AnyPointM2(float *mapX, float *mapY, int w, int h, double thetaX_degree, double thetaY_degree, double zoom, double magnification);
 
-    **Purpose** :
+**Purpose** :
     
 > Anypoint mode 2, the purpose is to generate a pair of X-Y Maps for the specified thetaX, thetaY and zoom parameters, the result X-Y Maps can be used later to remap the original fisheye image to the target angle image. The result rotation is thetaY degree rotation around the Y-axis(yaw) after thetaX degree rotation around the X-axis(pitch).
 
-    **Parameters** : 
+**Parameters** : 
 
     . mapX : memory pointer of result X-Map   
     . mapY : memory pointer of result Y-Map
@@ -115,7 +115,7 @@ Scalar(0, 0, 0));
 	. zoom : decimal zoom factor, normally 1..12
 	. manification : input image width / calibrationWidth, where calibrationWidth can get by calling getImageWidth(), manification is normally equal to 1.  
 
-	**Example** :
+**Example** :
 ```
 #include <opencv2/opencv.hpp>
 #include "moildev.h"
@@ -138,15 +138,15 @@ Scalar(0, 0, 0));
 	C++ : double fastAnyPointM(float *mapX, float *mapY, int w, int h, double alphaOffset, double betaOffset,
 	double zoom, double magnification);
 
-    **Purpose** :
+**Purpose** :
     
 > To generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to remap the original fisheye image to the target angle image. This function use fast algorithm to achieve similar result. However, some sampling artifacts appear with larger alphaOffset value. This function save about 50% computing time on Raspberry Pi.     
 
-    **Parameters** : 
+**Parameters** : 
 
 	same as 3.2 AnyPointM function
 
-	**Examples** :
+**Examples** :
 
 	same as 3.2 AnyPointM function
 
@@ -154,11 +154,11 @@ Scalar(0, 0, 0));
 
 	C++ : double PanoramaM(float *mapX, float *mapY, int w, int h, double magnification, double alpha_max);
 
-    **Purpose** :
+**Purpose** :
     
 > To generate a pair of X-Y Maps for alpha within 0..alpha_max degree, the result X-Y Maps can be used later to generate a panorama image from the original fisheye image.   
 
-    **Parameters** : 
+**Parameters** : 
 
     . mapX : memory pointer of result X-Map   
     . mapY : memory pointer of result Y-Map
@@ -169,7 +169,7 @@ Scalar(0, 0, 0));
 	. alpha_max : max of alpha. The recommended vaule is half of camera FOV. For example, use
 	  90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
 
-	**Example** :
+**Example** :
 ```
 #include <opencv2/opencv.hpp>
 #include "moildev.h"
@@ -190,11 +190,11 @@ Scalar(0, 0, 0));
 
 	C++ : double PanoramaM_Rt(float *mapX, float *mapY, int w, int h, double magnification, double alpha_max, double iC_alpha_degree, double iC_beta_degree);
 
-    **Purpose** :
+**Purpose** :
     
 > To generate a pair of X-Y Maps for alpha within 0..alpha_max degree, the result X-Y Maps can be used later to generate a panorama image from the original fisheye image. The panorama image centered at the 3D direction with alpha = iC_alpha_degree and beta = iC_beta_degree.    
 
-    **Parameters** : 
+**Parameters** : 
 
     . mapX : memory pointer of result X-Map   
     . mapY : memory pointer of result Y-Map
@@ -207,7 +207,7 @@ Scalar(0, 0, 0));
 	. iC_alpha_degree : alpha angle of panorana center.
 	. iC_beta_degree : beta angle of panorama center. 
 
-	Example :
+**Example** :
 ```
 #include <opencv2/opencv.hpp>
 #include "moildev.h"
@@ -224,12 +224,12 @@ cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, S
 
 ## 4. Build 
 
-	1. Ubuntu 18.04 :
+###	1. Ubuntu 18.04 :
 
 	g++ -o mainmoil main.cpp moildev.a `pkg-config --cflags opencv` `pkg-config --libs opencv` 
 
 
-	2. Raspberry Pi
+###	2. Raspberry Pi
 
 	g++ -o mainmoil main.cpp moildev_rpi.a `pkg-config --cflags opencv` `pkg-config --libs opencv` 
 
