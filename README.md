@@ -63,14 +63,14 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
     Example:   
 ```
-    #include "moildev.h"
-    Moildev *md = new Moildev();
-    // Raspberry Pi 220 degree fisheye camera
-    md->Config("car", 1.4, 1.4,
-        1320.0, 1017.0, 1.048,
-        2592, 1944, 4.05,
-        0, 0, 0, 0, -47.96, 222.86
-        );
+#include "moildev.h"
+Moildev *md = new Moildev();
+// Raspberry Pi 220 degree fisheye camera
+md->Config("car", 1.4, 1.4,
+1320.0, 1017.0, 1.048,
+2592, 1944, 4.05,
+0, 0, 0, 0, -47.96, 222.86
+);
 ```
 #### 3.2 AnypointM     
 
@@ -94,17 +94,17 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 	Example :
 ```
-	#include <opencv2/opencv.hpp>
-    #include "moildev.h"
-    Moildev *md = new Moildev();
-	// md->Config	
-	int m_ratio = 2592/ md->getImageWidth();
-    Mat mapX = Mat(1944, 2592, CV_32F);
-	Mat mapY = Mat(1944, 2592, CV_32F);
-	Mat image_input = imread( "image.jpg", IMREAD_COLOR);
-	Mat image_result;
-	md->AnyPointM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 0, 0, 4, m_ratio);     
-	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+#include <opencv2/opencv.hpp>
+#include "moildev.h"
+Moildev *md = new Moildev();
+// md->Config	
+int m_ratio = 2592/ md->getImageWidth();
+Mat mapX = Mat(1944, 2592, CV_32F);
+Mat mapY = Mat(1944, 2592, CV_32F);
+Mat image_input = imread( "image.jpg", IMREAD_COLOR);
+Mat image_result;
+md->AnyPointM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 0, 0, 4, m_ratio);     
+cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
 ```
 
 #### 3.3 AnypointM2     
@@ -128,17 +128,17 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 	Example :
 ```
-	#include <opencv2/opencv.hpp>
-    #include "moildev.h"
-    Moildev *md = new Moildev();
-	// md->Config	
-	int m_ratio = 2592/ md->getImageWidth();
-    Mat mapX = Mat(1944, 2592, CV_32F);
-	Mat mapY = Mat(1944, 2592, CV_32F);
-	Mat image_input = imread( "image.jpg", IMREAD_COLOR);
-	Mat image_result;
-	md->AnyPointM2((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 30, 30, 4, m_ratio);     
-	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+#include <opencv2/opencv.hpp>
+#include "moildev.h"
+Moildev *md = new Moildev();
+// md->Config	
+int m_ratio = 2592/ md->getImageWidth();
+Mat mapX = Mat(1944, 2592, CV_32F);
+Mat mapY = Mat(1944, 2592, CV_32F);
+Mat image_input = imread( "image.jpg", IMREAD_COLOR);
+Mat image_result;
+md->AnyPointM2((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 30, 30, 4, m_ratio);     
+cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
 ```
 
 
@@ -178,17 +178,17 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 	Example :
 ```
-	#include <opencv2/opencv.hpp>
-    #include "moildev.h"
-    Moildev *md = new Moildev();
-	// md->Config	
-	int m_ratio = 2592/ md->getImageWidth();
-    Mat mapX = Mat(1944, 2592, CV_32F);
-	Mat mapY = Mat(1944, 2592, CV_32F);
-	Mat image_input = imread( "image.jpg", IMREAD_COLOR);
-	Mat image_result;
-	md->PanoramaM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, m_ratio, 110);     
-	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+#include <opencv2/opencv.hpp>
+#include "moildev.h"
+Moildev *md = new Moildev();
+// md->Config	
+int m_ratio = 2592/ md->getImageWidth();
+Mat mapX = Mat(1944, 2592, CV_32F);
+Mat mapY = Mat(1944, 2592, CV_32F);
+Mat image_input = imread( "image.jpg", IMREAD_COLOR);
+Mat image_result;
+md->PanoramaM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, m_ratio, 110);     
+cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
 ```
 
 #### 3.6. PanoramaM_Rt
@@ -212,17 +212,17 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 	Example :
 ```
-	#include <opencv2/opencv.hpp>
-    #include "moildev.h"
-    Moildev *md = new Moildev();
-	// md->Config	
-	int m_ratio = 2592/ md->getImageWidth();
-    Mat mapX = Mat(1944, 2592, CV_32F);
-	Mat mapY = Mat(1944, 2592, CV_32F);
-	Mat image_input = imread( "image.jpg", IMREAD_COLOR);
-	Mat image_result;
-	md->PanoramaM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, m_ratio, 110);     
-	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+#include <opencv2/opencv.hpp>
+#include "moildev.h"
+Moildev *md = new Moildev();
+// md->Config	
+int m_ratio = 2592/ md->getImageWidth();
+Mat mapX = Mat(1944, 2592, CV_32F);
+Mat mapY = Mat(1944, 2592, CV_32F);
+Mat image_input = imread( "image.jpg", IMREAD_COLOR);
+Mat image_result;
+md->PanoramaM_Rt((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, m_ratio, 110, 30, 30);     
+cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
 ```
 
 ## 4. Build 
