@@ -90,7 +90,8 @@ md->Config("car", 1.4, 1.4,
 	. alphaOffset : alpha offset 
 	. betaOffset : beta offset
 	. zoom : decimal zoom factor, normally 1..12
-	. manification : input image width / calibrationWidth, where calibrationWidth can get by calling getImageWidth(), manification is normally equal to 1.  
+	. manification : input image width / calibrationWidth, where calibrationWidth can get by
+	  calling getImageWidth(), manification is normally equal to 1.  
 
 	Example :
 ```
@@ -103,8 +104,10 @@ Mat mapX = Mat(1944, 2592, CV_32F);
 Mat mapY = Mat(1944, 2592, CV_32F);
 Mat image_input = imread( "image.jpg", IMREAD_COLOR);
 Mat image_result;
-md->AnyPointM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 0, 0, 4, m_ratio);     
-cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+md->AnyPointM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 
+0, 0, 4, m_ratio);     
+cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, 
+Scalar(0, 0, 0));
 ```
 
 #### 3.3 AnypointM2     
@@ -137,8 +140,10 @@ Mat mapX = Mat(1944, 2592, CV_32F);
 Mat mapY = Mat(1944, 2592, CV_32F);
 Mat image_input = imread( "image.jpg", IMREAD_COLOR);
 Mat image_result;
-md->AnyPointM2((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 30, 30, 4, m_ratio);     
-cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+md->AnyPointM2((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 
+30, 30, 4, m_ratio);     
+cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, 
+Scalar(0, 0, 0));
 ```
 
 
@@ -173,8 +178,10 @@ cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, S
     . mapY : memory pointer of result Y-Map
 	. w : width of the Map (both mapX and mapY)
 	. h : height of the Map (both mapX and mapY)
-	. manification : input image width / calibrationWidth, where calibrationWidth can get by calling getImageWidth(), manification is normally equal to 1.  
-	. alpha_max : max of alpha. The recommended vaule is half of camera FOV. For example, use 90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
+	. manification : input image width / calibrationWidth, where calibrationWidth can get by
+	  calling getImageWidth(), manification is normally equal to 1.  
+	. alpha_max : max of alpha. The recommended vaule is half of camera FOV. For example, use
+	  90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
 
 	Example :
 ```
@@ -187,8 +194,10 @@ Mat mapX = Mat(1944, 2592, CV_32F);
 Mat mapY = Mat(1944, 2592, CV_32F);
 Mat image_input = imread( "image.jpg", IMREAD_COLOR);
 Mat image_result;
-md->PanoramaM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, m_ratio, 110);     
-cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+md->PanoramaM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows,
+m_ratio, 110);     
+cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, 
+Scalar(0, 0, 0));
 ```
 
 #### 3.6. PanoramaM_Rt
@@ -205,8 +214,10 @@ cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, S
     . mapY : memory pointer of result Y-Map
 	. w : width of the Map (both mapX and mapY)
 	. h : height of the Map (both mapX and mapY)
-	. manification : input image width / calibrationWidth, where calibrationWidth can get by calling getImageWidth(), manification is normally equal to 1.  
-	. alpha_max : max of alpha. The recommended vaule is half of camera FOV. For example, use 90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
+	. manification : input image width / calibrationWidth, where calibrationWidth can get by
+	  calling getImageWidth(), manification is normally equal to 1.  
+	. alpha_max : max of alpha. The recommended vaule is half of camera FOV. For example, use
+	  90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
 	. iC_alpha_degree : alpha angle of panorana center.
 	. iC_beta_degree : beta angle of panorama center. 
 
