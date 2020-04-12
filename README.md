@@ -10,8 +10,10 @@ MOIL SDK is a collection of functions support c++ developments for fisheye image
 
 For RaspberryPi, please download Raspbian opetating system image :
 https://www.raspberrypi.org/downloads/raspbian/
+
 following the installing steps : 
 https://www.raspberrypi.org/documentation/installation/installing-images/
+
 or tutorial :
 https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
