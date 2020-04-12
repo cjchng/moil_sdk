@@ -60,8 +60,8 @@ md->Config("car", 1.4, 1.4,
 );
 ```
 ### 3.2 AnypointM     
-檔案 *mapY, int w, int h, double alphaOffset, double betaOffset,
-    double zoom, double magnification);
+
+	C++ : double AnyPointM2(float *mapX, float *mapY, int w, int h, double alphaOffset, double betaOffset, double zoom, double magnification);
 
 **Purpose** :
     
