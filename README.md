@@ -38,7 +38,14 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 ### 3.1 Config 
 
-    C++ : bool Config(string cameraName, dou檔案
+    C++ : bool Config(string cameraName, double cameraSensorWidth, double cameraSensorHeight,
+        double iCx, double iCy, double i_ratio,
+        double imageWidth, double imageHeight, double calibrationRatio,
+        double para0, double para1, double para2, double para3, double para4, double para5
+        );
+
+**Purpose** :
+
 > Each fisheye camera can be calibrated and derives a set of parameters by MOIL laboratory, before the successive functions can work correctly, configuration is necessary in the beginning of program. 
     
 **Parameters** :
@@ -47,8 +54,15 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
     . cameraSensorWidth - Camera sensor width (cm)
     . cameraSensorHeight - Camera Sensor Height (cm)
     . iCx - image center X coordinate(pixel)
-    . iCy - image center Y coordinate(pixel)檔案
-    Example:   
+    . iCy - image center Y coordinate(pixel)
+    . i_ratio : Sensor pixel aspect ratio.
+    . imageWidth : Input image width
+    . imageHeight : Input image height  
+    . calibrationRatio : input image with/ calibration image width
+    . para0 .. para5 : calibration parameters
+
+**Example** :  
+
 ```
 #include "moildev.h"
 Moildev *md = new Moildev();
@@ -80,6 +94,7 @@ md->Config("car", 1.4, 1.4,
 	  calling getImageWidth(), manification is normally equal to 1.  
 
 **Example** :
+
 ```
 #include <opencv2/opencv.hpp>
 #include "moildev.h"
@@ -116,6 +131,7 @@ Scalar(0, 0, 0));
 	. manification : input image width / calibrationWidth, where calibrationWidth can get by calling getImageWidth(), manification is normally equal to 1.  
 
 **Example** :
+
 ```
 #include <opencv2/opencv.hpp>
 #include "moildev.h"
@@ -131,7 +147,6 @@ md->AnyPointM2((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows,
 cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, 
 Scalar(0, 0, 0));
 ```
-
 
 ### 3.4 fastAnyPointM
 
@@ -170,6 +185,7 @@ Scalar(0, 0, 0));
 	  90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
 
 **Example** :
+
 ```
 #include <opencv2/opencv.hpp>
 #include "moildev.h"
@@ -208,6 +224,7 @@ Scalar(0, 0, 0));
 	. iC_beta_degree : beta angle of panorama center. 
 
 **Example** :
+
 ```
 #include <opencv2/opencv.hpp>
 #include "moildev.h"
