@@ -224,12 +224,12 @@ cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, S
 
 ## 4. Build 
 
-###	1. Ubuntu 18.04 :
+###	4.1. Ubuntu 18.04 :
 
 	g++ -o mainmoil main.cpp moildev.a `pkg-config --cflags opencv` `pkg-config --libs opencv` 
 
 
-###	2. Raspberry Pi
+###	4.2. Raspberry Pi
 
 	g++ -o mainmoil main.cpp moildev_rpi.a `pkg-config --cflags opencv` `pkg-config --libs opencv` 
 
