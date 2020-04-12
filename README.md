@@ -75,7 +75,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
     Purpose :
     
-> To generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to remap the original fisheye image to the target angle image.   
+> Anypoint Mode 1, the purpose is to generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to remap the original fisheye image to the target angle image. The result rotation is betaOffset degree rotation around the Z-axis(roll) after alphaOffset degree rotation around the X-axis(pitch).  
 
     Parameters : 
 
@@ -102,7 +102,42 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 	md->AnyPointM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 0, 0, 4, m_ratio);     
 	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
 
-#### 3.3 fastAnyPointM
+#### 3.3 AnypointM2     
+
+    C++ : double AnyPointM2(float *mapX, float *mapY, int w, int h, double thetaX_degree, double thetaY_degree, double zoom, double magnification);
+
+    Purpose :
+    
+> Anypoint mode 2, the purpose is to generate a pair of X-Y Maps for the specified thetaX, thetaY and zoom parameters, the result X-Y Maps can be used later to remap the original fisheye image to the target angle image. The result rotation is thetaY degree rotation around the Y-axis(yaw) after thetaX degree rotation around the X-axis(pitch).
+
+    Parameters : 
+
+    . mapX : memory pointer of result X-Map   
+    . mapY : memory pointer of result Y-Map
+	. w : width of the Map (both mapX and mapY)
+	. h : height of the Map (both mapX and mapY)
+	. thetaX_degree : thetaX 
+	. thetaY_degree : thetaY
+	. zoom : decimal zoom factor, normally 1..12
+	. manification : input image width / calibrationWidth, where calibrationWidth can get by calling getImageWidth(), manification is normally equal to 1.  
+
+	Example :
+
+	#include <opencv2/opencv.hpp>
+    #include "moildev.h"
+    Moildev *md = new Moildev();
+	// md->Config	
+	int m_ratio = 2592/ md->getImageWidth();
+    Mat mapX = Mat(1944, 2592, CV_32F);
+	Mat mapY = Mat(1944, 2592, CV_32F);
+	Mat image_input = imread( "image.jpg", IMREAD_COLOR);
+	Mat image_result;
+	md->AnyPointM2((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, 30, 30, 4, m_ratio);     
+	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+
+
+
+#### 3.4 fastAnyPointM
 
 	C++ : double fastAnyPointM(float *mapX, float *mapY, int w, int h, double alphaOffset, double betaOffset,
 	double zoom, double magnification);
@@ -119,13 +154,13 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 	same as 3.2 AnyPointM function
 
-#### 3.4. PanoramaM
+#### 3.5. PanoramaM
 
 	C++ : double PanoramaM(float *mapX, float *mapY, int w, int h, double magnification, double alpha_max);
 
     Purpose :
     
-> To generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters, the result X-Y Maps can be used later to generate a panorama image from the original fisheye image.   
+> To generate a pair of X-Y Maps for alpha within 0..alpha_max degree, the result X-Y Maps can be used later to generate a panorama image from the original fisheye image.   
 
     Parameters : 
 
@@ -150,7 +185,40 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 	md->PanoramaM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, m_ratio, 110);     
 	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
 
-## 3. Build 
+#### 3.6. PanoramaM_Rt
+
+	C++ : double PanoramaM_Rt(float *mapX, float *mapY, int w, int h, double magnification, double alpha_max, double iC_alpha_degree, double iC_beta_degree);
+
+    Purpose :
+    
+> To generate a pair of X-Y Maps for alpha within 0..alpha_max degree, the result X-Y Maps can be used later to generate a panorama image from the original fisheye image. The panorama image centered at the 3D direction with alpha = iC_alpha_degree and beta = iC_beta_degree.    
+
+    Parameters : 
+
+    . mapX : memory pointer of result X-Map   
+    . mapY : memory pointer of result Y-Map
+	. w : width of the Map (both mapX and mapY)
+	. h : height of the Map (both mapX and mapY)
+	. manification : input image width / calibrationWidth, where calibrationWidth can get by calling getImageWidth(), manification is normally equal to 1.  
+	. alpha_max : max of alpha. The recommended vaule is half of camera FOV. For example, use 90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
+	. iC_alpha_degree : alpha angle of panorana center.
+	. iC_beta_degree : beta angle of panorama center. 
+
+	Example :
+
+	#include <opencv2/opencv.hpp>
+    #include "moildev.h"
+    Moildev *md = new Moildev();
+	// md->Config	
+	int m_ratio = 2592/ md->getImageWidth();
+    Mat mapX = Mat(1944, 2592, CV_32F);
+	Mat mapY = Mat(1944, 2592, CV_32F);
+	Mat image_input = imread( "image.jpg", IMREAD_COLOR);
+	Mat image_result;
+	md->PanoramaM((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, m_ratio, 110);     
+	cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
+
+## 4. Build 
 
 	1. Ubuntu 18.04 :
 
@@ -161,7 +229,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 	g++ -o mainmoil main.cpp moildev_rpi.a `pkg-config --cflags opencv` `pkg-config --libs opencv` 
 
-## 4. Example project
+## 5. Example project
 
 [https://github.com.cjchng/mainmoil_6view](https://github.com/cjchng/mainmoil_6view)
 
