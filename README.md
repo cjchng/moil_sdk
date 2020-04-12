@@ -1,6 +1,6 @@
 # MOIL SDK 
 
-MOIL SDK is collection of functions support c++ developments for fisheye image applications, tested both on ubuntu 18.04 and Raspberry Pi( Raspbian Buster ), gcc/g++ and OpenCV are required in the development. 
+MOIL SDK is a collection of functions support c++ developments for fisheye image applications, tested both on ubuntu 18.04 and Raspberry Pi( Raspbian Buster ), gcc/g++ and OpenCV are required in the development. 
 
 ![moil_basic_steps](https://user-images.githubusercontent.com/3524867/73999970-65850480-49a1-11ea-9e0b-6b88d1d49fb7.jpg)
 
@@ -38,14 +38,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
 
 #### 3.1 Config 
 
-    C++ : bool Config(string cameraName, double cameraSensorWidth, double cameraSensorHeight,
-        double iCx, double iCy, double i_ratio,
-        double imageWidth, double imageHeight, double calibrationRatio,
-        double para0, double para1, double para2, double para3, double para4, double para5
-        );
-        
-    Purpose : 
-    
+    C++ : bool Config(string cameraName, dou檔案
 > Each fisheye camera can be calibrated and derives a set of parameters by MOIL laboratory, before the successive functions can work correctly, configuration is necessary in the beginning of program. 
     
     Parameters :
@@ -54,13 +47,7 @@ https://oranwind.org/-raspberry-pi-win32-disk-imager-shao-lu-sd-qia-jiao-xue/
     . cameraSensorWidth - Camera sensor width (cm)
     . cameraSensorHeight - Camera Sensor Height (cm)
     . iCx - image center X coordinate(pixel)
-    . iCy - image center Y coordinate(pixel)
-    . i_ratio : Sensor pixel aspect ratio.
-    . imageWidth : Input image width
-    . imageHeight : Input image height  
-    . calibrationRatio : input image with/ calibration image width
-    . para0 .. para5 : calibration parameters
-
+    . iCy - image center Y coordinate(pixel)檔案
     Example:   
 ```
 #include "moildev.h"
@@ -73,8 +60,7 @@ md->Config("car", 1.4, 1.4,
 );
 ```
 #### 3.2 AnypointM     
-
-    C++ : double AnyPointM(float *mapX, float *mapY, int w, int h, double alphaOffset, double betaOffset,
+檔案 *mapY, int w, int h, double alphaOffset, double betaOffset,
     double zoom, double magnification);
 
     Purpose :
