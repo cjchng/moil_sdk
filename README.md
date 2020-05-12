@@ -241,6 +241,48 @@ md->PanoramaM_Rt((float *)mapX.data, (float *)mapY.data, mapX.cols, mapX.rows, m
 cv::remap(image_input, image_result, mapX, mapY, INTER_CUBIC, BORDER_CONSTANT, Scalar(0, 0, 0));
 ```
 
+### 3.7. getAlphaBetaFromPos
+
+	C++ : vector<int> getAlphaBetaFromPos(int Mode, vector<int> Pos);
+	
+	Qt : QPointF getAlphaBetaFromPos(int Mode, QPoint Pos);
+
+**Purpose** :
+    
+> To get alpha and beta value for point on original fisheye image.    
+
+**Parameters** : 
+
+    . Mode : 0 for Pitch/ Roll mode( Mode 1), 1 for Pitch/ Yaw mode( Mode 2).   
+    . Pos : X and Y of point.
+	
+**Example#1 (c++)** :
+
+```
+#include <opencv2/opencv.hpp>
+#include "moildev.h"
+Moildev *md = new Moildev();
+// md->Config	
+int m_ratio = 2592/ md->getImageWidth();
+Mat mapX = Mat(1944, 2592, CV_32F);
+Mat mapY = Mat(1944, 2592, CV_32F);
+Mat image_input = imread( "image.jpg", IMREAD_COLOR);
+vector<int>Pos;
+Pos.push_back(1000);
+Pos.push_back(600);
+vector<int>ab = md->getAlphaBetaFromPos(0, Pos);
+
+```
+**Example#2 (Qt)** :
+```
+Moildev md ;
+QPoint Pos = QPoint(1000, 600);
+QPointF ab = md.getAlphaBetaFromPos(0, Pos);
+currAlpha = (int)ab.x();
+currBeta = (int)ab.y();
+
+```
+
 ## 4. Build 
 
 ###	4.1. Ubuntu 18.04 :
